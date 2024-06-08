@@ -1,0 +1,59 @@
+[
+  {
+    "rating": "5",
+    "title": "Al Fatiha",
+    "text": "Surat Al Fatiha",
+    "img": "img/pic-1.png",
+    "audio": "https://server8.mp3quran.net/afs/001.mp3"
+  },
+  {
+    "rating": "5",
+    "title": "Al Ikhlas",
+    "text": "Surat Al Ikhlas",
+    "img": "img/pic-2.png",
+    "audio": "https://server8.mp3quran.net/afs/112.mp3"
+  },
+  {
+    "rating": "5",
+    "title": "Al Falaq",
+    "text": "Surat Al Falaq",
+    "img": "img/pic-3.png",
+    "audio": "https://server8.mp3quran.net/afs/113.mp3"
+  },
+  {
+    "rating": "5",
+    "title": "Al Nas",
+    "text": "Surat Al Nas",
+    "img": "img/pic-4.png",
+    "audio": "https://server8.mp3quran.net/afs/114.mp3"
+  },
+  {
+    "rating": "5",
+    "title": "Al Masad",
+    "text": "Surat Al Masad",
+    "img": "img/pic-5.png",
+    "audio": "https://server8.mp3quran.net/afs/111.mp3"
+  },
+  {
+    "rating": "5",
+    "title": "Al Nasr",
+    "text": "Surat Al Nasr",
+    "img": "img/pic-1.png",
+    "audio": "https://server8.mp3quran.net/afs/110.mp3"
+  },
+  {
+    "rating": "5",
+    "title": "Al Kafirun",
+    "text": "Surat Al Kafirun",
+    "img": "img/pic-1.png",
+    "audio": "https://server8.mp3quran.net/afs/109.mp3"
+  },
+  {
+    "rating": "5",
+    "title": "Al Kawthar",
+    "text": "Surat Al Kawthar",
+    "img": "img/pic-1.png",
+    "audio": "https://server8.mp3quran.net/afs/108.mp3"
+  }
+]
+
