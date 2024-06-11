@@ -2,20 +2,21 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 
 class BooksProvider with ChangeNotifier {
   List books = [];
   List popularBooks = [];
 
-  readData(context) {
-    DefaultAssetBundle.of(context)
+  readData() {
+    rootBundle
         .loadString('json/books.json')
         .then((s) {
         books = jsonDecode(s);
         notifyListeners();
     });
 
-    DefaultAssetBundle.of(context)
+    rootBundle
         .loadString('json/popularBooks.json')
         .then((s) {
         popularBooks = jsonDecode(s);

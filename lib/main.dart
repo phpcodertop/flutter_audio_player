@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: ChangeNotifierProvider(
-        create: (BuildContext context) => BooksProvider(),
+      home: ChangeNotifierProvider<BooksProvider>(
+        create: (BuildContext context) => BooksProvider()..readData(),
         builder: (context, child) {
           return const MyHomePage();
         },

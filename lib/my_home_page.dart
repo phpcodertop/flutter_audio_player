@@ -27,70 +27,73 @@ class _MyHomePageState extends State<MyHomePage>
   void initState(){
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
-    context.read<BooksProvider>().readData(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    books = context.read<BooksProvider>().books;
-    popularBooks = context.read<BooksProvider>().popularBooks;
 
-    return Container(
-      color: AppColors.background,
-      child: SafeArea(
-        child: Scaffold(
-          body: Column(
-            children: [
-              const HomeMenu(),
-              const SizedBox(
-                height: 20,
-              ),
-              PopularBooks(books: popularBooks),
-              Expanded(
-                child: NestedScrollView(
-                  controller: _scrollController,
-                  headerSliverBuilder:
-                      (BuildContext context, bool innerBoxIsScrolled) {
-                    return [
-                      HomeTabs(tabController: _tabController),
-                    ];
-                  },
-                  body: TabBarView(
-                    controller: _tabController,
-                    children: [
-                      ListView.builder(
-                        itemCount: books.length,
-                        itemBuilder: (context, i) {
-                          final book = books[i];
-                          return SingleListItem(
-                            book: book,
-                          );
-                        },
-                      ),
-                      const Material(
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.grey,
-                          ),
-                          title: Text('Content'),
-                        ),
-                      ),
-                      const Material(
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.grey,
-                          ),
-                          title: Text('Content'),
-                        ),
-                      ),
-                    ],
+    return Consumer<BooksProvider>(
+      builder: (context, booksProvider, _) {
+        books = booksProvider.books;
+        popularBooks = booksProvider.popularBooks;
+        return Container(
+          color: AppColors.background,
+          child: SafeArea(
+            child: Scaffold(
+              body: Column(
+                children: [
+                  const HomeMenu(),
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
+                  PopularBooks(books: popularBooks),
+                  Expanded(
+                    child: NestedScrollView(
+                      controller: _scrollController,
+                      headerSliverBuilder:
+                          (BuildContext context, bool innerBoxIsScrolled) {
+                        return [
+                          HomeTabs(tabController: _tabController),
+                        ];
+                      },
+                      body: TabBarView(
+                        controller: _tabController,
+                        children: [
+                          ListView.builder(
+                            itemCount: books.length,
+                            itemBuilder: (context, i) {
+                              final book = books[i];
+                              return SingleListItem(
+                                book: book,
+                              );
+                            },
+                          ),
+                          const Material(
+                            child: ListTile(
+                              leading: CircleAvatar(
+                                backgroundColor: Colors.grey,
+                              ),
+                              title: Text('Content'),
+                            ),
+                          ),
+                          const Material(
+                            child: ListTile(
+                              leading: CircleAvatar(
+                                backgroundColor: Colors.grey,
+                              ),
+                              title: Text('Content'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

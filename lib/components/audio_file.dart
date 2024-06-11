@@ -39,15 +39,6 @@ class _AudioPlayerState extends State<AudioFile> {
     Icons.pause_circle_filled,
   ];
 
-  readData() async {
-    await DefaultAssetBundle.of(context)
-        .loadString('json/books.json')
-        .then((s) {
-      setState(() {
-        books = jsonDecode(s);
-      });
-    });
-  }
 
   @override
   void initState() {
@@ -191,7 +182,7 @@ class _AudioPlayerState extends State<AudioFile> {
   Widget btnLoop() {
     return IconButton(
       onPressed: () async {
-        books = context.read<BooksProvider>().books;
+        books = context.watch<BooksProvider>().books;
 
         widget.advancedPlayer.stop();
         Navigator.of(context).pushReplacement(
@@ -221,7 +212,7 @@ class _AudioPlayerState extends State<AudioFile> {
           btnSlow(),
           btnStart(),
           btnFast(),
-          btnLoop(),
+          // btnLoop(),
         ],
       ),
     );
@@ -229,10 +220,9 @@ class _AudioPlayerState extends State<AudioFile> {
 
   @override
   Widget build(BuildContext context) {
-    //books = context.read<BooksProvider>().books;
-    return ChangeNotifierProvider<BooksProvider>(
-      create: (context) => BooksProvider()..readData(context),
-      builder: (context, child) {
+    return Consumer<BooksProvider>(
+      builder: (context, booksProvider, _) {
+        books = booksProvider.books;
         return Container(
           child: Column(
             children: [
